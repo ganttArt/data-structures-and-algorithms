@@ -66,7 +66,7 @@ Return an array containing all the matches.
 
 const isCapitalized = (str) => {
   const regex = /\b[A-Z].*?\b/g;
-  return str.match(regex);
+  return str.match(regex) || [];
 };
 
 /* ------------------------------------------------------------------------------------------------
