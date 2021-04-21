@@ -18,7 +18,6 @@ function insertShiftArray(array, value) {
     }
     newArray.push(element);
   }
-
   return newArray;
 }
 

@@ -16,4 +16,4 @@ by iterating through the input array (space -> O(n)).
 
 ## Solution
 <!-- Embedded whiteboard image -->
-
+![whiteboard](whiteboard.png)
