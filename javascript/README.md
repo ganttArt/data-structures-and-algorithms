@@ -5,6 +5,7 @@
 ### Table of Contents
 
 - [Array Shift](code-challenges/arrayShift/README.md)
+- [Array Binary Search](code-challenges/arrayBinarySearch/README.md)
 
 ### Folder and Challenge Setup
 
