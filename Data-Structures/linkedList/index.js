@@ -7,9 +7,11 @@ let ll = new LinkedList();
 console.log('empty list', ll);
 
 ll.append(10);
+ll.append(11);
+ll.append(12);
+ll.append(13);
 
-console.log('single item', ll);
+ll.insert(1);
+ll.insert(2);
 
-ll.append(20);
-
-console.log('2 items', ll);
+console.log(ll.toString());
