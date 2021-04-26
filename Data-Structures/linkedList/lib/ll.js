@@ -67,6 +67,58 @@ class LinkedList {
     strRepr += `{ ${current.value} } -> NULL`;
     return strRepr;
   }
+
+  insertBefore(value, newValue) {
+    if (this.head.value === value) {
+      this.insert(newValue);
+      return this;
+    }
+    else if (this.head && this.head.next) {
+      let previous = this.head;
+      let current = this.head.next;
+      while (current.next) {
+        if (current.value === value) {
+          let newNode = new Node(newValue);
+          newNode.next = current;
+          previous.next = newNode;
+          return this;
+        }
+        else {
+          previous = current;
+          current = current.next;
+        }
+      }
+      if (current.value === value) {
+        let newNode = new Node(newValue);
+        newNode.next = current;
+        previous.next = newNode;
+        return this;
+      }
+    }
+    return 'Value not in Linked List';
+  }
+
+  insertAfter(value, newValue) {
+    let current = this.head;
+    while (current.next) {
+      if (current.value === value) {
+        let after = current.next;
+        current.next = new Node(newValue);
+        current.next.next = after;
+        return this;
+      }
+      else {
+        current = current.next;
+      }
+      if (current.value === value) {
+        let after = current.next;
+        current.next = new Node(newValue);
+        current.next.next = after;
+        return this;
+      }
+    }
+    return 'Value not in Linked List';
+  }
 }
 
 module.exports = LinkedList;
