@@ -134,6 +134,7 @@ class LinkedList {
   }
 
   kthFromEnd(k) {
+    if (k < 0 ) throw 'Error: k cannot be a negative number.';
     const length = this.getLength();
     if (k > length) throw 'Error: k > length of linked list';
     let current = this.head;
