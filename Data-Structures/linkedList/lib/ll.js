@@ -119,6 +119,29 @@ class LinkedList {
     }
     return 'Value not in Linked List';
   }
+
+  getLength() {
+    if(!this.head) {
+      return 0;
+    }
+    let current = this.head;
+    let length = 1;
+    while (current.next) {
+      length += 1;
+      current = current.next;
+    }
+    return length;
+  }
+
+  kthFromEnd(k) {
+    const length = this.getLength();
+    if (k > length) throw 'Error: k > length of linked list';
+    let current = this.head;
+    for (let i = 0; i < (length - k - 1); i++) {
+      current = current.next;
+    }
+    return current.value;
+  }
 }
 
 module.exports = LinkedList;
