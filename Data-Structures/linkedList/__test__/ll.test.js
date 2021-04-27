@@ -138,3 +138,34 @@ describe('Linked List insertAfter', () => {
     expect(insertionError).toEqual('Value not in Linked List');
   });
 });
+
+describe('Linked List length method and kthFromEnd', () => {
+  it('Will return the correct length of a linked list', () => {
+    let list = new LL();
+    expect(list.getLength()).toEqual(0);
+
+    list.append(1);
+    expect(list.getLength()).toEqual(1);
+
+    list.append(2);
+    expect(list.getLength()).toEqual(2);
+
+    list.append(5);
+    expect(list.getLength()).toEqual(3);
+  });
+
+  it('Will return the correct value for n, test 1', () => {
+    let list = new LL();
+    list.append(1).append(3).append(8).append(2);
+    expect(list.kthFromEnd(0)).toEqual(2);
+    expect(list.kthFromEnd(2)).toEqual(3);
+  });
+
+  it('Will return an error message when k > length of the linked list', () => {
+    let list = new LL();
+    list.append(1).append(3).append(8).append(2);
+    try {
+      list.kthFromEnd(6);
+    } catch (e) {expect(e).toEqual('Error: k > length of linked list');}
+  });
+});
