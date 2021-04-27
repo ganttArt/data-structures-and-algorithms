@@ -154,11 +154,15 @@ describe('Linked List length method and kthFromEnd', () => {
     expect(list.getLength()).toEqual(3);
   });
 
-  it('Will return the correct value for n, test 1', () => {
+  it('Will return the correct value for n', () => {
     let list = new LL();
-    list.append(1).append(3).append(8).append(2);
+    list.append(100);
+    expect(list.kthFromEnd(1)).toEqual(100);
+
+    list.append(3).append(8).append(2);
     expect(list.kthFromEnd(0)).toEqual(2);
     expect(list.kthFromEnd(2)).toEqual(3);
+    expect(list.kthFromEnd(4)).toEqual(100);
   });
 
   it('Will return an error message when k > length of the linked list', () => {
@@ -167,5 +171,14 @@ describe('Linked List length method and kthFromEnd', () => {
     try {
       list.kthFromEnd(6);
     } catch (e) {expect(e).toEqual('Error: k > length of linked list');}
+  });
+
+  it('Will return an error where k is not a positive integer', () => {
+    let list = new LL();
+    list.append(1).append(3).append(8).append(2);
+
+    try {
+      list.kthFromEnd(-4);
+    } catch (e) {expect(e).toEqual('Error: k cannot be a negative number.')};
   });
 });
