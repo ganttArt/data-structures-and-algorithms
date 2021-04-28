@@ -283,7 +283,7 @@ describe('Zip two linked lists', () => {
     try {
       zipLists(list1, list2);
     } catch (e) {
-      expect(e).toEqual('Error: Both linked lists are empty.')
+      expect(e).toEqual('Error: Both linked lists are empty.');
     }
   });
 });
