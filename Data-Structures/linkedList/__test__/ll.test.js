@@ -185,30 +185,30 @@ describe('Linked List length method and kthFromEnd', () => {
 });
 
 describe('Zip two linked lists', () => {
-  it('Zips two linked lists of the same length', () => {
-    let list1 = new LL();
-    let list2 = new LL();
-    list1.append(9);
-    list2.append(1);
+  // it('Zips two linked lists of the same length', () => {
+  //   let list1 = new LL();
+  //   let list2 = new LL();
+  //   list1.append(9);
+  //   list2.append(1);
 
-    let zipList = zipLists(list1, list2);
-    expect(zipList.head.value).toEqual(9);
-    expect(zipList.head.next.value).toEqual(1);
-    expect(zipList.head.next.next).toEqual(null);
+  //   let zipList = zipLists(list1, list2);
+  //   expect(zipList.head.value).toEqual(9);
+  //   expect(zipList.head.next.value).toEqual(1);
+  //   expect(zipList.head.next.next).toEqual(null);
 
-    list1.append(8).append(7);
-    list2.append(2).append(3);
-    zipList = zipLists(list1, list2);
+  //   list1.append(8).append(7);
+  //   list2.append(2).append(3);
+  //   zipList = zipLists(list1, list2);
 
-    let expected = [9, 1, 8, 2, 7, 3];
-    let currentIndex = 0;
-    let current = zipList.head;
-    while (current){
-      expect(current.value).toEqual(expected[currentIndex]);
-      currentIndex += 1;
-      current = current.next;
-    }
-  });
+  //   let expected = [9, 1, 8, 2, 7, 3];
+  //   let currentIndex = 0;
+  //   let current = zipList.head;
+  //   while (current){
+  //     expect(current.value).toEqual(expected[currentIndex]);
+  //     currentIndex += 1;
+  //     current = current.next;
+  //   }
+  // });
 
   it('Zips two linked lists where list2 length > list1 length', () => {
     let list1 = new LL();

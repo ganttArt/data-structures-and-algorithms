@@ -11,6 +11,7 @@ function zipLists(list1, list2) {
   console.log('precurrent');
   let current1 = list1.head;
   let current2 = list2.head;
+
   while (current1) {
     if (current2) {
       // attempt 2
