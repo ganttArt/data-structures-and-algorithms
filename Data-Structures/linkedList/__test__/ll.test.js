@@ -1,6 +1,7 @@
 'use strict';
 
 const LL = require('../lib/ll.js');
+const zipLists = require('../lib/ll-zip');
 
 describe('Linked List', () => {
   it('should create an empty LL on instantiation', () => {
@@ -180,5 +181,109 @@ describe('Linked List length method and kthFromEnd', () => {
     try {
       list.kthFromEnd(-4);
     } catch (e) {expect(e).toEqual('Error: k cannot be a negative number.')};
+  });
+});
+
+describe('Zip two linked lists', () => {
+  it('Zips two linked lists of the same length', () => {
+    let list1 = new LL();
+    let list2 = new LL();
+    list1.append(9);
+    list2.append(1);
+
+    let zipList = zipLists(list1, list2);
+    expect(zipList.head.value).toEqual(9);
+    expect(zipList.head.next.value).toEqual(1);
+    expect(zipList.head.next.next).toEqual(null);
+
+    list1.append(8).append(7);
+    list2.append(2).append(3);
+    zipList = zipLists(list1, list2);
+
+    let expected = [9, 1, 8, 2, 7, 3];
+    let currentIndex = 0;
+    let current = zipList.head;
+    while (current){
+      expect(current.value).toEqual(expected[currentIndex]);
+      currentIndex += 1;
+      current = current.next;
+    }
+  });
+
+  it('Zips two linked lists where list2 length > list1 length', () => {
+    let list1 = new LL();
+    let list2 = new LL();
+    list1.append(9).append(8);
+    list2.append(1).append(2).append(3);
+    let zipList = zipLists(list1, list2);
+
+    let expected = [9, 1, 8, 2, 3];
+    let currentIndex = 0;
+    let current = zipList.head;
+    while (current){
+      expect(current.value).toEqual(expected[currentIndex]);
+      currentIndex += 1;
+      current = current.next;
+    }
+  });
+
+  it('Zips two linked lists where list2 length < list1 length', () => {
+    let list1 = new LL();
+    let list2 = new LL();
+    list1.append(9).append(8).append(7);
+    list2.append(1).append(2);
+    let zipList = zipLists(list1, list2);
+
+    let expected = [9, 1, 8, 2, 7];
+    let currentIndex = 0;
+    let current = zipList.head;
+    while (current){
+      expect(current.value).toEqual(expected[currentIndex]);
+      currentIndex += 1;
+      current = current.next;
+    }
+  });
+
+  it('Zips two linked lists where only list one is empty', () => {
+    let list1 = new LL();
+    let list2 = new LL();
+    list2.append(1).append(2);
+    let zipList = zipLists(list1, list2);
+
+    let expected = [1, 2];
+    let currentIndex = 0;
+    let current = zipList.head;
+    while (current){
+      expect(current.value).toEqual(expected[currentIndex]);
+      currentIndex += 1;
+      current = current.next;
+    }
+  });
+
+  it('Zips two linked lists where only list two is empty', () => {
+    let list1 = new LL();
+    let list2 = new LL();
+    list1.append(9).append(8);
+    let zipList = zipLists(list1, list2);
+
+    let expected = [9, 8];
+    let currentIndex = 0;
+    let current = zipList.head;
+    while (current){
+      expect(current.value).toEqual(expected[currentIndex]);
+      currentIndex += 1;
+      current = current.next;
+    }
+  });
+
+  it('Throws an error when both lists are empty', () => {
+    let list1 = new LL();
+    let list2 = new LL();
+
+    try {
+      zipLists(list1, list2);
+    } catch (e) {
+      expect(e).toEqual('Error: Both linked lists are empty.')
+    }
   });
 });
