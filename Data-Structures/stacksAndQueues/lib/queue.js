@@ -9,14 +9,27 @@ class Queue {
   enqueue(value) {
     this[this.length] = value;
     this.length++;
-
+    if (!this.next) this.next = 0;
     return this;
+  }
+
+  dequeue() {
+    if (this.next === null) throw 'Error: empty queue';
+    let result = this[this.next];
+    delete this[this.next];
+    this.length--;
+    this.length === 0 ? this.next = null : this.next ++;
+    return result;
+  }
+
+  peek() {
+    if (this.length === 0) throw 'Error: empty queue';
+    return this[this.next];
+  }
+
+  isEmpty() {
+    return ((this.length === 0) && (this.next === null)) ? true : false;
   }
 }
 
-let queue = new Queue();
-
-console.log('empty queue', queue);
-console.log('enqueue first', queue.enqueue(1));
-console.log('enqueue second', queue.enqueue(2));
-console.log('enqueue third', queue.enqueue(3));
+module.exports = Queue;
