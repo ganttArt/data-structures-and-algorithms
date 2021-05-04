@@ -25,3 +25,31 @@ The Stack instances have only push, pop, and peek methods. You should use your o
 ## Solution
 <!-- Embedded whiteboard image -->
 ![queue with stacks](images/queue-with-stacks.png)
+
+---
+
+## Challenge Summary 5/4/2021
+<!-- Short summary or background information -->
+First-in, First out Animal Shelter.
+
+## Challenge Description
+<!-- Description of the challenge -->
+Create a class called AnimalShelter which holds only dogs and cats. The shelter operates using a first-in, first-out approach.  
+
+Implement the following methods:  
+
+- enqueue(animal): adds animal to the shelter. animal can be either a dog or a cat object.
+- dequeue(pref): returns either a dog or a cat. If pref is not "dog" or "cat" then return null.
+
+## Approach & Efficiency
+<!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
+- Enqueue
+  - Time -> O(1)
+  - Space -> O(1)
+- Dequeue
+  - Time -> O(1)
+  - Space -> O(1)
+
+## Solution
+<!-- Embedded whiteboard image -->
+![fifo animal shelter](images/fifo-animal-shelter.png)
