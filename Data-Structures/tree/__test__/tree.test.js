@@ -101,4 +101,27 @@ describe('BST data structure testing', () => {
       expect(bst.contains(number)).toEqual(false);
     });
   });
+
+  it('Will return the correct maximum value when findMaximumValue method is called.', () => {
+    let node = new Node(1);
+    let bt = new BinaryTree(node);
+    expect(bt.findMaximumValue()).toEqual(1);
+
+    node.left = new Node(3);
+    node.right = new Node(2);
+    expect(bt.findMaximumValue()).toEqual(3);
+
+    node.left.left = new Node(-4);
+    node.left.right = new Node(5);
+    expect(bt.findMaximumValue()).toEqual(5);
+  });
+
+  it('Will throw an error when findMaximumValue method is called but the tree is empty.', () => {
+    let bt = new BinaryTree();
+    try {
+      bt.findMaximumValue();
+    } catch (e) {
+      expect(e).toEqual('Error: Empty tree');
+    }
+  });
 });
