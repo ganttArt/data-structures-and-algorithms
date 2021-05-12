@@ -77,7 +77,6 @@ describe('BST data structure testing', () => {
     bst.add(13);
     bst.add(99);
     bst.add(65);
-    console.log(bst);
     expect(bst.root.value).toEqual(50);
     expect(bst.root.left.value).toEqual(25);
     expect(bst.root.left.left.value).toEqual(13);
@@ -120,6 +119,28 @@ describe('BST data structure testing', () => {
     let bt = new BinaryTree();
     try {
       bt.findMaximumValue();
+    } catch (e) {
+      expect(e).toEqual('Error: Empty tree');
+    }
+  });
+
+  it('When breadth first method is called, it will return an array in the correct order', () => {
+    let node = new Node(1);
+    node.left = new Node(2);
+    node.right = new Node(3);
+    node.left.left = new Node(4);
+    node.left.right = new Node(5);
+    node.right.left = new Node(6);
+    node.right.right = new Node(7);
+    let bt = new BinaryTree(node);
+    let expected = [1, 2, 3, 4, 5, 6, 7];
+    expect(bt.breadthFirst()).toEqual(expected);
+  });
+
+  it('Will throw an error when breadthFirst method is called but the tree is empty.', () => {
+    let bt = new BinaryTree();
+    try {
+      bt.breadthFirst();
     } catch (e) {
       expect(e).toEqual('Error: Empty tree');
     }
