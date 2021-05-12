@@ -1,7 +1,7 @@
 'use strict';
 
 class Node {
-  constructor(value, left = null, right = null){
+  constructor(value, left = null, right = null) {
     this.value = value;
     this.left = left;
     this.right = right;
@@ -9,7 +9,7 @@ class Node {
 }
 
 class BinaryTree {
-  constructor(root = null){
+  constructor(root = null) {
     this.root = root;
   }
 
@@ -68,11 +68,35 @@ class BinaryTree {
     _walk(this.root);
     return max;
   }
+
+  breadthFirst() {
+    // with help from https://medium.com/basecs/breaking-down-breadth-first-search-cebe696709d9#:~:text=Breadth%2Dfirst%20search%20involves%20search,traverse%20through%20the%20grandchildren%20nodes.
+    if (!this.root) throw 'Error: Empty tree';
+
+    let allValues = [];
+    let queue = [];
+    queue.push(this.root);
+
+    while (queue.length > 0) {
+      let currentNode = queue[0];
+      allValues.push(currentNode.value);
+
+      if (currentNode.left !== null) {
+        queue.push(currentNode.left);
+      }
+      if (currentNode.right !== null) {
+        queue.push(currentNode.right);
+      }
+      queue.shift();
+    }
+
+    return allValues;
+  }
 }
 
 class BinarySearchTree {
   // takes in the root of a sorted bt
-  constructor(root = null){
+  constructor(root = null) {
     this.root = root;
   }
 
